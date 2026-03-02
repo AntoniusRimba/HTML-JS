@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pembelajaran JavaScript Dasar</title>
+</head>
+<body>
+
+    <h1>Pembelajaran JavaScript Dasar</h1>
+    <p>Buka Console Browser (F12 → Console) untuk melihat hasil output.</p>
+
+    <script>
+        // ===============================
+        // PROGRAM PEMBELAJARAN JAVASCRIPT DASAR
+        // ===============================
+
+        // ====== OUTPUT ======
+        console.log("=== Program Belajar JavaScript Dasar ===");
+
+        // ====== INPUT ======
+        let nama = prompt("Masukkan nama Anda:");
+        console.log("Halo, " + nama + "!");
+
+        // ====== TIPE DATA ======
+        let umur = Number(prompt("Masukkan umur Anda:")); // Number
+        let mahasiswa = true; // Boolean
+        let jurusan = "Informatika"; // String
+
+        console.log("=== Data Anda ===");
+        console.log("Nama       : " + nama);
+        console.log("Umur       : " + umur);
+        console.log("Mahasiswa  : " + mahasiswa);
+        console.log("Jurusan    : " + jurusan);
+
+        // ====== LOOP FOR ======
+        console.log("=== Perulangan FOR ===");
+        for (let i = 1; i <= 5; i++) {
+            console.log("Perulangan ke-" + i);
+        }
+
+        // ====== LOOP WHILE ======
+        console.log("=== Perulangan WHILE ===");
+        let angka = 1;
+        while (angka <= 3) {
+            console.log("Angka: " + angka);
+            angka++;
+        }
+
+        console.log("=== Program Selesai ===");
+    </script>
+
+</body>
+</html>
