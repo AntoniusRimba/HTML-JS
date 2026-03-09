@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Geometri Modern</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f3;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+        }
+        
+        #output {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: left;
+            min-height: 100px;
+        }
+        
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .formula {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📐 Kalkulator Geometri</h1>
+    <p>Klik tombol di bawah untuk mulai menghitung luas bangun datar.</p>
+
+    <button onclick="hitungLuas()">Mulai Hitung</button>
+
+    <div id="output">
+        <p style="color: #999;">Hasil perhitungan akan muncul di sini...</p>
+    </div>
+
+    <p><b>Terima kasih telah mencoba eksperimen JavaScript ini!</b></p>
+
+    <script>
+        function hitungLuas() {
+            let hasilDiv = document.getElementById("output");
+            let hasilHTML = "";
+
+            // ====== INPUT MENU ======
+            let pilihan = prompt("Pilih Bangun Datar:\n1. Lingkaran\n2. Segitiga\n3. Segiempat (Persegi/Panjang)");
+
+            switch (pilihan) {
+                case "1": // LINGKARAN
+                    let r = Number(prompt("Masukkan jari-jari lingkaran:"));
+                    if (r > 0) {
+                        let luasL = Math.PI * Math.pow(r, 2);
+                        hasilHTML += "<h3>🔵 Hasil Lingkaran</h3>";
+                        hasilHTML += "Jari-jari: " + r + "<br>";
+                        hasilHTML += "<strong>Luas: " + luasL.toFixed(2) + "</strong><br>";
+                        hasilHTML += "<span class='formula'>Rumus: π × r²</span>";
+                    } else {
+                        hasilHTML = "<span style='color:red;'>Input jari-jari tidak valid!</span>";
+                    }
+                    break;
+
+                case "2": // SEGITIGA
+                    let alas = Number(prompt("Masukkan alas segitiga:"));
+                    let tinggi = Number(prompt("Masukkan tinggi segitiga:"));
+                    if (alas > 0 && tinggi > 0) {
+                        let luasS = 0.5 * alas * tinggi;
+                        hasilHTML += "<h3>🔺 Hasil Segitiga</h3>";
+                        hasilHTML += "Alas: " + alas + "<br>";
+                        hasilHTML += "Tinggi: " + tinggi + "<br>";
+                        hasilHTML += "<strong>Luas: " + luasS + "</strong><br>";
+                        hasilHTML += "<span class='formula'>Rumus: ½ × alas × tinggi</span>";
+                    } else {
+                        hasilHTML = "<span style='color:red;'>Input alas/tinggi tidak valid!</span>";
+                    }
+                    break;
+
+                case "3": // SEGIEMPAT
+                    let p = Number(prompt("Masukkan panjang:"));
+                    let l = Number(prompt("Masukkan lebar:"));
+                    if (p > 0 && l > 0) {
+                        let luasE = p * l;
+                        hasilHTML += "<h3>🟦 Hasil Segiempat</h3>";
+                        hasilHTML += "Panjang: " + p + "<br>";
+                        hasilHTML += "Lebar: " + l + "<br>";
+                        hasilHTML += "<strong>Luas: " + luasE + "</strong><br>";
+                        hasilHTML += "<span class='formula'>Rumus: panjang × lebar</span>";
+                    } else {
+                        hasilHTML = "<span style='color:red;'>Input panjang/lebar tidak valid!</span>";
+                    }
+                    break;
+
+                default:
+                    alert("Pilihan tidak ada! Silakan masukkan angka 1, 2, atau 3.");
+                    return;
+            }
+
+            // Tampilkan ke layar
+            hasilDiv.innerHTML = hasilHTML;
+        }
+    </script>
+
+</body>
+
+</html>

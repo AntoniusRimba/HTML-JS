@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Program Belajar JavaScript Dasar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: darkblue;
+        }
+        
+        #output {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        button {
+            padding: 8px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Program Pembelajaran JavaScript Dasar</h1>
+    <p>Klik tombol di bawah untuk menjalankan program.</p>
+
+    <button onclick="jalankanProgram()">Jalankan Program</button>
+
+    <div id="output"></div>
+
+    <p><b>Selamat Belajar. Terima kasih.</b></p>
+
+    <script>
+        function jalankanProgram() {
+
+            let hasil = "";
+
+            // ====== INPUT ======
+            let nama = prompt("Masukkan nama Anda:");
+            let umur = Number(prompt("Masukkan umur Anda:"));
+
+            // ====== TIPE DATA ======
+            let mahasiswa = true;
+            let jurusan = "Informatika";
+
+            hasil += "<h3>=== Data Anda ===</h3>";
+            hasil += "Nama: " + nama + "<br>";
+            hasil += "Umur: " + umur + "<br>";
+            hasil += "Mahasiswa: " + mahasiswa + "<br>";
+            hasil += "Jurusan: " + jurusan + "<br><br>";
+
+            // ====== LOOP FOR ======
+            hasil += "<h3>=== Perulangan FOR ===</h3>";
+            for (let i = 1; i <= 5; i++) {
+                hasil += "Perulangan ke-" + i + "<br>";
+            }
+
+            // ====== LOOP WHILE ======
+            hasil += "<h3>=== Perulangan WHILE ===</h3>";
+            let angka = 1;
+            while (angka <= 3) {
+                hasil += "Angka: " + angka + "<br>";
+                angka++;
+            }
+
+            hasil += "<br><strong>=== Program Selesai ===</strong>";
+
+            document.getElementById("output").innerHTML = hasil;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+/* Reset & Base */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+
+/* Header Style */
+
+.header {
+    border: 2px solid #000;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    width: fit-content;
+}
+
+.header img {
+    width: 120px;
+    height: 100px;
+    border: 1px solid #000;
+}
+
+
+/* Container & Sections */
+
+.section {
+    border: 1px solid #000;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    width: fit-content;
+    min-width: 450px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Typography & Inputs */
+
+.input-row {
+    margin-bottom: 15px;
+}
+
+label {
+    display: inline-block;
+    width: 140px;
+    color: blue;
+    /* Warna biru sesuai gambar */
+}
+
+input[type="text"],
+input[type="number"] {
+    border: 1px solid #000;
+    padding: 4px;
+    color: blue;
+}
+
+.label-pilihan {
+    color: blue;
+    margin-bottom: 10px;
+}
+
+
+/* Button OK */
+
+button {
+    border: 1px solid #000;
+    background: #fff;
+    padding: 2px 20px;
+    cursor: pointer;
+    color: blue;
+}
+
+button:hover {
+    background: #e0e0e0;
+}
+
+
+/* Error Trapping */
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.hasil-box {
+    border: 1px solid #000;
+    padding: 10px;
+    font-style: italic;
+}
+
+.button-group {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+
+/* Memastikan label pilihan tetap konsisten dengan gambar baru */
+
+.input-row label {
+    font-weight: bold;
+    color: #333;
+    /* Mengikuti warna teks di gambar terbaru */
+}

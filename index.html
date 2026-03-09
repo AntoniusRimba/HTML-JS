@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 4 - JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <img src="m18.png" alt="Foto Mahasiswa">
+        <div class="info-mhs">
+            <strong>Nama:</strong> Antonius Rimba Adiprihartanto<br>
+            <strong>NIM:</strong> 245314036<br>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <div id="step1" class="section">
+            <div class="input-row">
+                <label>Nama :</label>
+                <input type="text" id="inputNama" placeholder="<Masukkan Nama>">
+            </div>
+            <div class="input-row">
+                <label>Jumlah Pilihan :</label>
+                <input type="number" id="inputJml" placeholder="<Masukkan Jumlah Pilihan>">
+            </div>
+            <button onclick="prosesTahap1()">OK</button>
+            <span id="err1" class="error"></span>
+        </div>
+
+        <div id="step2" class="section hidden">
+            <div id="containerPilihan"></div>
+            <div class="button-group">
+                <button onclick="prosesTahap2()">OK</button>
+                <button onclick="tambahSatuInput()">Tambah Pilihan</button>
+            </div>
+            <span id="err2" class="error"></span>
+        </div>
+
+        <div id="step3" class="section hidden">
+            <p class="label-pilihan">Pilihan :</p>
+            <div id="containerSelection"></div>
+            <button onclick="prosesTahap3()">OK</button>
+            <span id="err3" class="error"></span>
+        </div>
+
+        <div id="step4" class="section hidden">
+            <div class="input-row">
+                <label>Email :</label>
+                <input type="text" id="inputEmail" placeholder="<email@domain.com>">
+            </div>
+            <button onclick="prosesTahap4()">OK</button>
+            <span id="err4" class="error"></span>
+        </div>
+
+        <div id="step5" class="section hidden">
+            <div class="hasil-box">
+                <p id="teksHasil"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
