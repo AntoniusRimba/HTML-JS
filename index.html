@@ -9,20 +9,27 @@
 </head>
 
 <body>
+    <div class="shape circle"></div>
+    <div class="shape rectangle"></div>
+    <div class="shape star">★</div>
+
     <header class="card">
-        <img src="foto.jpg" alt="Profile">
-        <p>Antonius Rimba Adiprihartanto | 245314036</p>
+        <img src="foto.jpg" alt="Profile" width="100">
+        <div class="header-text">
+            <h3>Portal Mahasiswa</h3>
+            <p>Antonius Rimba Adiprihartanto | 245314036</p>
+        </div>
     </header>
 
     <main class="container">
         <section id="step1" class="section card">
             <h2>Mulai Pilihan Anda</h2>
             <div class="field">
-                <label>Nama : </label>
+                <label>Nama</label>
                 <input type="text" id="inputNama" placeholder="Masukkan nama...">
             </div>
             <div class="field">
-                <label>Jumlah Pilihan : </label>
+                <label>Jumlah Pilihan</label>
                 <input type="number" id="inputJml" placeholder="Contoh: 3">
             </div>
             <button class="btn-primary" onclick="prosesTahap1()">Lanjutkan</button>

@@ -1,114 +1,177 @@
+:root {
+    --bg-color: #fdf9f0;
+    --primary-blue: #1d70e2;
+    --text-dark: #1a1a1a;
+    --accent-orange: #ff5c35;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: white;
-    color: black;
-    margin: 20px;
+    background-color: var(--bg-color);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 
-/* HAPUS efek modern */
+/* Dekorasi Geometris */
 
 .shape {
-    display: none;
+    position: fixed;
+    z-index: -1;
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    background: var(--accent-orange);
+    border-radius: 50%;
+    top: 10%;
+    right: 15%;
+}
+
+.rectangle {
+    width: 80px;
+    height: 160px;
+    background: var(--primary-blue);
+    bottom: 5%;
+    right: 10%;
+    transform: rotate(-15deg);
+}
+
+.star {
+    font-size: 100px;
+    color: #ffce31;
+    top: 15%;
+    right: 5%;
 }
 
 .card {
-    background: none;
-    box-shadow: none;
-    border-radius: 0;
-    padding: 0;
-    max-width: none;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 20px;
 }
 
-
-/* Header sederhana */
-
 header.card {
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+    padding: 15px 25px;
 }
 
 header img {
-    width: 100px;
-    height: auto;
+    border-radius: 10px;
 }
 
+.header-text h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
 
-/* Judul biasa */
+.header-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
 
 h2 {
-    font-size: 16px;
-    border: none;
-    padding: 0;
+    font-size: 1.5rem;
+    margin-top: 0;
+    border-left: 5px solid var(--primary-blue);
+    padding-left: 15px;
 }
-
-
-/* Input sederhana */
-
-input {
-    width: auto;
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 0;
-}
-
-
-/* Label inline */
-
-label {
-    display: inline;
-    font-weight: normal;
-}
-
-
-/* Button klasik */
-
-button {
-    padding: 5px 10px;
-    border: 1px solid black;
-    background: lightgray;
-    cursor: pointer;
-}
-
-
-/* Hapus style khusus */
-
-.btn-primary,
-.btn-outline,
-.btn-inline {
-    all: unset;
-    padding: 5px 10px;
-    border: 1px solid black;
-    background: lightgray;
-    cursor: pointer;
-}
-
-
-/* Layout vertikal */
 
 .field {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+}
+
+.btn-primary {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #eee;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 
-/* Error tetap ada */
+/* Input Email ala gambar inspirasi */
 
-.error {
-    color: red;
-    font-size: 12px;
+.email-group {
+    display: flex;
+    border: 2px solid var(--primary-blue);
+    border-radius: 12px;
+    overflow: hidden;
 }
 
+.email-group input {
+    border: none;
+    border-radius: 0;
+    flex: 1;
+}
 
-/* Step hidden */
+.btn-inline {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+}
 
 .hidden {
     display: none;
 }
 
-
-/* Final text */
+.error {
+    color: var(--accent-orange);
+    font-size: 0.8rem;
+    margin-top: 10px;
+    display: block;
+}
 
 .final-message {
-    font-style: normal;
-    border: none;
+    background: #fff;
+    border-bottom: 8px solid var(--primary-blue);
+    line-height: 1.6;
+    font-style: italic;
 }
