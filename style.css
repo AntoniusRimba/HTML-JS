@@ -1,119 +1,114 @@
-:root {
-    --primary-blue: #2563eb;
-    --border-color: #e2e8f0;
-    --text-main: #334155;
-    --bg-body: #f8fafc;
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+    margin: 20px;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-body);
-    color: var(--text-main);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    margin: 0;
+
+/* HAPUS efek modern */
+
+.shape {
+    display: none;
 }
 
 .card {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    padding: 24px;
-    width: 100%;
-    max-width: 550px;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    max-width: none;
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    gap: 24px;
+
+/* Header sederhana */
+
+header.card {
+    display: block;
+    margin-bottom: 10px;
 }
 
-.header img {
-    border-radius: 8px;
-    border: 2px solid var(--primary-blue);
+header img {
+    width: 100px;
+    height: 100px;
 }
 
-.header h2 {
-    margin: 0 0 10px 0;
-    color: var(--primary-blue);
+
+/* Judul biasa */
+
+h2 {
+    font-size: 16px;
+    border: none;
+    padding: 0;
 }
 
-.input-group {
-    margin-bottom: 16px;
-    display: flex;
-    flex-direction: column;
-}
 
-label {
-    font-weight: 600;
-    color: var(--primary-blue);
-    margin-bottom: 6px;
-}
+/* Input sederhana */
 
 input {
-    padding: 10px 14px;
-    border: 1.5px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 15px;
-    outline: none;
+    width: auto;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 0;
 }
 
-input:focus {
-    border-color: var(--primary-blue);
+
+/* Label inline */
+
+label {
+    display: inline;
+    font-weight: normal;
 }
 
-.btn-primary {
-    background-color: var(--primary-blue);
-    color: white;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 6px;
-    font-weight: 600;
+
+/* Button klasik */
+
+button {
+    padding: 5px 10px;
+    border: 1px solid black;
+    background: lightgray;
     cursor: pointer;
 }
 
-.btn-secondary {
-    background-color: #f1f5f9;
-    color: var(--text-main);
-    border: 1px solid var(--border-color);
-    padding: 10px 20px;
-    border-radius: 6px;
+
+/* Hapus style khusus */
+
+.btn-primary,
+.btn-outline,
+.btn-inline {
+    all: unset;
+    padding: 5px 10px;
+    border: 1px solid black;
+    background: lightgray;
     cursor: pointer;
 }
+
+
+/* Layout vertikal */
+
+.field {
+    margin-bottom: 10px;
+}
+
+
+/* Error tetap ada */
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+
+/* Step hidden */
 
 .hidden {
     display: none;
-    opacity: 0;
-    transform: translateY(10px);
 }
 
-.section:not(.hidden) {
-    animation: fadeIn 0.5s forwards;
-}
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* Final text */
 
-.error {
-    color: #ef4444;
-    font-size: 13px;
-    margin-top: 8px;
-    display: block;
-}
-
-.final-card {
-    border-left: 6px solid #10b981;
-    background: #f0fdf4;
-    font-style: italic;
-    text-align: center;
+.final-message {
+    font-style: normal;
+    border: none;
 }

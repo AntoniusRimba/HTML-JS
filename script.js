@@ -1,124 +1,89 @@
-// Objek untuk menyimpan data state
 let state = {
     nama: "",
-    jumlah: 0,
-    daftarPilihan: [],
-    pilihanFinal: "",
+    jml: 0,
+    pilihan: [],
+    terpilih: "",
     email: ""
 };
 
-// Fungsi baru untuk menambah satu baris input secara dinamis
-function tambahSatuInput() {
-    state.jumlah++; // Tambah counter jumlah pilihan [cite: 11]
-    const container = document.getElementById('containerPilihan');
+function prosesTahap1() {
+    state.nama = document.getElementById('inputNama').value;
+    state.jml = parseInt(document.getElementById('inputJml').value);
 
+    if (!state.nama || isNaN(state.jml) || state.jml < 1) {
+        document.getElementById('err1').innerText = "Mohon isi nama dan jumlah dengan benar.";
+        return;
+    }
+
+    const container = document.getElementById('containerPilihan');
+    container.innerHTML = "";
+    for (let i = 1; i <= state.jml; i++) {
+        container.innerHTML += `
+            <div class="field">
+                <label>Pilihan ${i}</label>
+                <input type="text" class="pil-input" placeholder="Teks pilihan ${i}...">
+            </div>`;
+    }
+    document.getElementById('step2').classList.remove('hidden');
+    document.getElementById('err1').innerText = "";
+}
+
+function tambahSatuInput() {
+    state.jml++;
+    const container = document.getElementById('containerPilihan');
     const div = document.createElement('div');
-    div.className = 'input-row';
-    div.innerHTML = `
-        <label>Pilihan ${state.jumlah} :</label>
-        <input type="text" class="input-teks-pilihan" placeholder="<Teks Pilihan ${state.jumlah}>">
-    `;
+    div.className = "field";
+    div.innerHTML = `<label>Pilihan ${state.jml}</label>
+                     <input type="text" class="pil-input" placeholder="Teks pilihan ${state.jml}...">`;
     container.appendChild(div);
 }
 
-// Tahap 1 -> Tahap 2
-function prosesTahap1() {
-    const namaInput = document.getElementById('inputNama').value;
-    const jmlInput = parseInt(document.getElementById('inputJml').value);
-    const err = document.getElementById('err1');
+function prosesTahap2() {
+    const inputs = document.querySelectorAll('.pil-input');
+    state.pilihan = Array.from(inputs).map(i => i.value);
 
-    // Error Trapping [cite: 42]
-    if (!namaInput || isNaN(jmlInput) || jmlInput <= 0) {
-        err.innerText = "Nama dan Jumlah harus diisi dengan benar!";
+    if (state.pilihan.some(p => p === "")) {
+        document.getElementById('err2').innerText = "Harap isi semua teks pilihan.";
         return;
     }
 
-    state.nama = namaInput;
-    state.jumlah = jmlInput;
-    err.innerText = "";
-
-    // Generate input dinamis [cite: 11]
-    const container = document.getElementById('containerPilihan');
-    container.innerHTML = "";
-    for (let i = 1; i <= state.jumlah; i++) {
-        container.innerHTML += `
-            <div class="input-row">
-                <label>Pilihan ${i} :</label>
-                <input type="text" class="input-teks-pilihan" placeholder="<Teks Pilihan ${i}>">
-            </div>
-        `;
-    }
-    document.getElementById('step2').classList.remove('hidden');
-}
-
-// Tahap 2 -> Tahap 3
-function prosesTahap2() {
-    const inputs = document.querySelectorAll('.input-teks-pilihan');
-    const err = document.getElementById('err2');
-    let tempPilihan = [];
-
-    // Error trapping: pastikan tidak ada yang kosong 
-    for (let input of inputs) {
-        if (!input.value.trim()) {
-            err.innerText = "Semua teks pilihan harus diisi!";
-            return;
-        }
-        tempPilihan.push(input.value);
-    }
-
-    state.daftarPilihan = tempPilihan;
-    state.jumlah = tempPilihan.length; // Sinkronisasi jumlah akhir 
-    err.innerText = "";
-
-    // Lanjut ke pembuatan Radio Button (Tahap 3) [cite: 13, 21]
     const container = document.getElementById('containerSelection');
     container.innerHTML = "";
-    state.daftarPilihan.forEach((teks, idx) => {
+    state.pilihan.forEach((p, idx) => {
         container.innerHTML += `
-            <div>
-                <input type="radio" name="radioPilih" id="opt${idx}" value="${teks}">
-                <label for="opt${idx}" style="color:black; width:auto; font-weight:normal;">${teks}</label>
-            </div>
-        `;
+            <div class="radio-item">
+                <input type="radio" name="opt" id="p${idx}" value="${p}">
+                <label for="p${idx}" style="display:inline; font-weight:normal; margin-left:10px;">${p}</label>
+            </div>`;
     });
     document.getElementById('step3').classList.remove('hidden');
+    document.getElementById('err2').innerText = "";
 }
 
-// Tahap 3 -> Tahap 4
 function prosesTahap3() {
-    const selected = document.querySelector('input[name="radioPilih"]:checked');
-    const err = document.getElementById('err3');
-
+    const selected = document.querySelector('input[name="opt"]:checked');
     if (!selected) {
-        err.innerText = "Silakan pilih salah satu!";
+        document.getElementById('err3').innerText = "Pilih salah satu opsi.";
         return;
     }
-
-    state.pilihanFinal = selected.value;
-    err.innerText = "";
+    state.terpilih = selected.value;
     document.getElementById('step4').classList.remove('hidden');
+    document.getElementById('err3').innerText = "";
 }
 
-// Tahap 4 -> Tahap 5 (Final)
 function prosesTahap4() {
-    const emailInput = document.getElementById('inputEmail').value;
-    const err = document.getElementById('err4');
+    const email = document.getElementById('inputEmail').value;
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Pattern matching email [cite: 25]
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(emailInput)) {
-        err.innerText = "Format email tidak valid (contoh: nama@domain.com)!";
+    if (!regex.test(email)) {
+        document.getElementById('err4').innerText = "Email tidak valid.";
         return;
     }
 
-    state.email = emailInput;
-    err.innerText = "";
-
-    // Tampilkan Hasil Akhir [cite: 39]
-    const daftarStr = state.daftarPilihan.join(", ");
-    const hasil = `Hallo, nama saya ${state.nama}, email ${state.email} saya mempunyai sejumlah ${state.jumlah} pilihan yaitu ${daftarStr}, dan saya memilih ${state.pilihanFinal}`;
+    state.email = email;
+    const hasil = `Hallo, nama saya ${state.nama}, email ${state.email}, saya mempunyai sejumlah ${state.pilihan.length} pilihan yaitu ${state.pilihan.join(", ")}, dan saya memilih ${state.terpilih}.`;
 
     document.getElementById('teksHasil').innerText = hasil;
     document.getElementById('step5').classList.remove('hidden');
+    document.getElementById('err4').innerText = "";
 }

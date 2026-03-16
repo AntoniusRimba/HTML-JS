@@ -4,65 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tugas 4 - JavaScript</title>
+    <title>Tugas 4 - Modern Interface</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="shape circle"></div>
+    <div class="shape rectangle"></div>
+    <div class="shape star">★</div>
 
-    <div class="header">
-        <img src="m18.png" alt="Foto Mahasiswa">
-        <div class="info-mhs">
-            <strong>Nama:</strong> Antonius Rimba Adiprihartanto<br>
-            <strong>NIM:</strong> 245314036<br>
+    <header class="card">
+        <img src="" alt="Profile">
+        <div class="header-text">
+            <h3>Portal Mahasiswa</h3>
+            <p>Antonius Rimba Adiprihartanto | 245314036</p>
         </div>
-    </div>
+    </header>
 
-    <div class="main-wrapper">
-        <div id="step1" class="section">
-            <div class="input-row">
-                <label>Nama :</label>
-                <input type="text" id="inputNama" placeholder="<Masukkan Nama>">
+    <main class="container">
+        <section id="step1" class="section card">
+            <h2>Mulai Pilihan Anda</h2>
+            <div class="field">
+                <label>Nama : </label>
+                <input type="text" id="inputNama" placeholder="Masukkan nama...">
             </div>
-            <div class="input-row">
-                <label>Jumlah Pilihan :</label>
-                <input type="number" id="inputJml" placeholder="<Masukkan Jumlah Pilihan>">
+            <div class="field">
+                <label>Jumlah Pilihan : </label>
+                <input type="number" id="inputJml" placeholder="Contoh: 3">
             </div>
-            <button onclick="prosesTahap1()">OK</button>
+            <button class="btn-primary" onclick="prosesTahap1()">Lanjutkan</button>
             <span id="err1" class="error"></span>
-        </div>
+        </section>
 
-        <div id="step2" class="section hidden">
+        <section id="step2" class="section card hidden">
+            <h2>Isi Detail Pilihan</h2>
             <div id="containerPilihan"></div>
-            <div class="button-group">
-                <button onclick="prosesTahap2()">OK</button>
-                <button onclick="tambahSatuInput()">Tambah Pilihan</button>
+            <div class="actions">
+                <button class="btn-outline" onclick="tambahSatuInput()">+ Tambah</button>
+                <button class="btn-primary" onclick="prosesTahap2()">OK</button>
             </div>
             <span id="err2" class="error"></span>
-        </div>
+        </section>
 
-        <div id="step3" class="section hidden">
-            <p class="label-pilihan">Pilihan :</p>
-            <div id="containerSelection"></div>
-            <button onclick="prosesTahap3()">OK</button>
+        <section id="step3" class="section card hidden">
+            <h2>Tentukan Pilihan</h2>
+            <p class="sub-text">Pilih salah satu opsi di bawah ini:</p>
+            <div id="containerSelection" class="radio-group"></div>
+            <button class="btn-primary" onclick="prosesTahap3()">Konfirmasi</button>
             <span id="err3" class="error"></span>
-        </div>
+        </section>
 
-        <div id="step4" class="section hidden">
-            <div class="input-row">
-                <label>Email :</label>
-                <input type="text" id="inputEmail" placeholder="<email@domain.com>">
+        <section id="step4" class="section card hidden">
+            <h2>Validasi Kontak</h2>
+            <div class="field email-group">
+                <input type="text" id="inputEmail" placeholder="nama@email.com">
+                <button class="btn-inline" onclick="prosesTahap4()">Langganan</button>
             </div>
-            <button onclick="prosesTahap4()">OK</button>
             <span id="err4" class="error"></span>
-        </div>
+        </section>
 
-        <div id="step5" class="section hidden">
-            <div class="hasil-box">
-                <p id="teksHasil"></p>
-            </div>
-        </div>
-    </div>
+        <section id="step5" class="section card hidden final-message">
+            <p id="teksHasil"></p>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

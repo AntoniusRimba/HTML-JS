@@ -1,82 +1,167 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Program Belajar JavaScript Dasar</title>
+    <title>Tugas JavaScript</title>
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
+            font-family: Arial;
+            margin: 40px;
         }
         
-        h1 {
-            color: darkblue;
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
         
-        #output {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        .header img {
+            width: 100px;
         }
         
-        button {
-            padding: 8px 15px;
-            margin-top: 10px;
-            cursor: pointer;
+        .section {
+            margin-top: 20px;
         }
     </style>
+
 </head>
 
 <body>
 
-    <h1>Program Pembelajaran JavaScript Dasar</h1>
-    <p>Klik tombol di bawah untuk menjalankan program.</p>
+    <div class="header">
+        <img src="foto.jpg">
+        <div>
+            <h3>Nama : ANTONIUS RIMBA ADIPRIHARTANTO</h3>
+            <h3>NIM : 245314036</h3>
+        </div>
+    </div>
 
-    <button onclick="jalankanProgram()">Jalankan Program</button>
+    <hr>
 
+    <div class="section">
+
+        Nama :
+        <input type="text" id="nama"><br><br> Jumlah Pilihan :
+        <input type="number" id="jumlah" min="1"><br><br>
+
+        <button onclick="step1()">OK</button>
+
+    </div>
+
+    <div id="pilihanInput"></div>
+    <div id="radioArea"></div>
+    <div id="emailArea"></div>
     <div id="output"></div>
 
-    <p><b>Selamat Belajar. Terima kasih.</b></p>
-
     <script>
-        function jalankanProgram() {
+        let pilihanArray = [];
+        let namaUser = "";
+        let jumlahPilihan = 0;
+        let pilihanDipilih = "";
 
-            let hasil = "";
+        function step1() {
 
-            // ====== INPUT ======
-            let nama = prompt("Masukkan nama Anda:");
-            let umur = Number(prompt("Masukkan umur Anda:"));
+            namaUser = document.getElementById("nama").value;
+            jumlahPilihan = parseInt(document.getElementById("jumlah").value);
 
-            // ====== TIPE DATA ======
-            let mahasiswa = true;
-            let jurusan = "Informatika";
-
-            hasil += "<h3>=== Data Anda ===</h3>";
-            hasil += "Nama: " + nama + "<br>";
-            hasil += "Umur: " + umur + "<br>";
-            hasil += "Mahasiswa: " + mahasiswa + "<br>";
-            hasil += "Jurusan: " + jurusan + "<br><br>";
-
-            // ====== LOOP FOR ======
-            hasil += "<h3>=== Perulangan FOR ===</h3>";
-            for (let i = 1; i <= 5; i++) {
-                hasil += "Perulangan ke-" + i + "<br>";
+            if (namaUser == "" || jumlahPilihan <= 0) {
+                alert("Nama dan jumlah harus diisi");
+                return;
             }
 
-            // ====== LOOP WHILE ======
-            hasil += "<h3>=== Perulangan WHILE ===</h3>";
-            let angka = 1;
-            while (angka <= 3) {
-                hasil += "Angka: " + angka + "<br>";
-                angka++;
+            let html = "";
+
+            for (let i = 1; i <= jumlahPilihan; i++) {
+
+                html += "Pilihan " + i + " : ";
+                html += "<input type='text' id='p" + i + "'><br><br>";
+
             }
 
-            hasil += "<br><strong>=== Program Selesai ===</strong>";
+            html += "<button onclick='step2()'>OK</button>";
 
-            document.getElementById("output").innerHTML = hasil;
+            document.getElementById("pilihanInput").innerHTML = html;
+
+        }
+
+        function step2() {
+
+            pilihanArray = [];
+
+            for (let i = 1; i <= jumlahPilihan; i++) {
+
+                let teks = document.getElementById("p" + i).value;
+
+                if (teks == "") {
+                    alert("Semua pilihan harus diisi");
+                    return;
+                }
+
+                pilihanArray.push(teks);
+
+            }
+
+            let html = "Pilihan : <br><br>";
+
+            for (let i = 0; i < pilihanArray.length; i++) {
+
+                html += "<input type='radio' name='radioPilihan' value='" + pilihanArray[i] + "'> ";
+                html += pilihanArray[i] + "<br>";
+
+            }
+
+            html += "<br><button onclick='step3()'>OK</button>";
+
+            document.getElementById("radioArea").innerHTML = html;
+
+        }
+
+        function step3() {
+
+            let radio = document.getElementsByName("radioPilihan");
+
+            for (let i = 0; i < radio.length; i++) {
+                if (radio[i].checked) {
+                    pilihanDipilih = radio[i].value;
+                }
+            }
+
+            if (pilihanDipilih == "") {
+                alert("Pilih salah satu pilihan");
+                return;
+            }
+
+            let html = "Email : ";
+            html += "<input type='text' id='email'>";
+            html += "<br><br><button onclick='step4()'>OK</button>";
+
+            document.getElementById("emailArea").innerHTML = html;
+
+        }
+
+        function step4() {
+
+            let email = document.getElementById("email").value;
+
+            let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if (!email.match(pattern)) {
+                alert("Email tidak valid");
+                return;
+            }
+
+            let semuaPilihan = pilihanArray.join(", ");
+
+            let kalimat =
+                "Hallo, nama saya " + namaUser +
+                ", email " + email +
+                " saya mempunyai sejumlah " + jumlahPilihan +
+                " pilihan yaitu " + semuaPilihan +
+                ", dan saya memilih " + pilihanDipilih;
+
+            document.getElementById("output").innerHTML = "<h3>" + kalimat + "</h3>";
+
         }
     </script>
 
